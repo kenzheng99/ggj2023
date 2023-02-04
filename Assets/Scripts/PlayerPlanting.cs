@@ -22,7 +22,7 @@ public class PlayerPlanting : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlot) {
                 Debug.Log("plant");
                 plantSlot.gameObject.GetComponent<PlantSlot>().PlantInSlot();
