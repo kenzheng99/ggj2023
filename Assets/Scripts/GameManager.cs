@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public enum PlantType {
-    NONE,
     PLANT1,
     PLANT2,
     PLANT3
+}
+
+public enum CorpseType {
+    TYPE1,
+    TYPE2,
+    TYPE3
 }
 
 public enum PlantGrowth {
@@ -25,14 +31,11 @@ public class PlantData {
 
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
-    private PlantType corpseType = PlantType.NONE;
-
-    // TODO add other global state variables here
+    private Queue<CorpseType> corpses;
 
     void Start() {
-        if (plants == null) {
-            plants = new Dictionary<int, PlantData>();
-        }
+        plants = new Dictionary<int, PlantData>();
+        corpses = new Queue<CorpseType>();
     }
     public void LoadFarmScene() {
         SceneManager.LoadScene("FarmScene");
@@ -42,17 +45,30 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("ForestScene");
     }
 
-    public void SetPlantData(int index, PlantType type, PlantGrowth growth) {
-        PlantData data = new PlantData();
-        data.type = type;
-        data.growth = growth;
-        plants[index] = data;
-    }
-
     public PlantData GetPlantData(int index) {
         if (plants.ContainsKey(index)) {
             return plants[index];
         }
         return null;
+    }
+
+    public void AddCorpse(CorpseType type) {
+        corpses.Enqueue(type);
+        Debug.Log("Corpses Carried: " + corpses.Count);
+    }
+
+    // called by PlantSlot to get the plant data to instantiate
+    public PlantData PlantNextCorpse(int slotIndex) {
+        if (corpses.Count == 0) {
+            return null;
+        }
+        CorpseType corpseToPlant = corpses.Dequeue();
+        PlantData data = new PlantData();
+        
+        // note this assumes that the PlantType and CorpseType enums are exactly aligned
+        data.type = (PlantType) CorpseType.TYPE1;
+        data.growth = PlantGrowth.MINIMUM;
+        plants[slotIndex] = data;
+        return data;
     }
 }

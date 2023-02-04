@@ -24,10 +24,8 @@ public class PlayerPlanting : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlot) {
-                plantSlot.gameObject.GetComponent<PlantSlot>().PlantInSlot();
-            } else {
-                Debug.Log("can't plant");
-            }
+                plantSlot.gameObject.GetComponent<PlantSlot>().PlantNextCorpse();
+            } 
         }
     }
 }

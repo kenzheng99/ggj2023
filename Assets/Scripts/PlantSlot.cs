@@ -14,11 +14,22 @@ public class PlantSlot : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    public void PlantInSlot() {
-        if (!plant) {
-            Vector3 plantPosition = transform.position + Vector3.up * verticalOffset;
-            plant = Instantiate(plantPrefab, plantPosition, Quaternion.identity);
-            gameManager.SetPlantData(transform.GetSiblingIndex(), PlantType.PLANT1, PlantGrowth.MINIMUM);
+    public void PlantNextCorpse() {
+        PlantData plantData = gameManager.PlantNextCorpse(transform.GetSiblingIndex());
+        if (plantData == null) {
+            Debug.Log("no corpses to plant");
+            return;
         }
+        PlantInSlot(plantData);
+    }
+
+    public void PlantInSlot(PlantData plantData) {
+        if (plant) {
+            return;
+        }
+        
+        Vector3 plantPosition = transform.position + Vector3.up * verticalOffset;
+        plant = Instantiate(plantPrefab, plantPosition, Quaternion.identity);
+        plant.GetComponent<Plant>().SetType(plantData.type);
     }
 }

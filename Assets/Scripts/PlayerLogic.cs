@@ -7,15 +7,15 @@ public class PlayerLogic : MonoBehaviour
 {
     private bool _canKill;
     public npcLogic npc;
+    private GameManager gameManager;
 
     // private Collision2D NPC;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        gameManager = GameManager.Instance;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -28,12 +28,9 @@ public class PlayerLogic : MonoBehaviour
     {
         if (_canKill)
         {
-            Debug.Log("KILL");
+            // TODO make this type dynamic
+            gameManager.AddCorpse(CorpseType.TYPE1);
             npc.die();
-        }
-        else
-        {
-            Debug.Log("cannot kill");
         }
     }
 

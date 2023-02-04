@@ -9,8 +9,9 @@ public class PlantSlots : MonoBehaviour
         gameManager = GameManager.Instance;
         Debug.Log("PlantSlots: childCount = " + transform.childCount);
         for (int i = 0; i < transform.childCount; i++) {
-            if (gameManager.GetPlantData(i) != null) {
-                transform.GetChild(i).GetComponent<PlantSlot>().PlantInSlot();
+            PlantData plantData = gameManager.GetPlantData(i);
+            if (plantData != null) {
+                transform.GetChild(i).GetComponent<PlantSlot>().PlantInSlot(plantData);
             }
         }
     }
