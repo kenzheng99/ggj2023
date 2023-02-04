@@ -40,10 +40,15 @@ public class MapSize
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
+    private Dictionary<PlantType, int> numHarvested;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
         corpses = new Queue<CorpseType>();
+        numHarvested = new Dictionary<PlantType, int>();
+        numHarvested[PlantType.PLANT1] = 0;
+        numHarvested[PlantType.PLANT2] = 0;
+        numHarvested[PlantType.PLANT3] = 0;
     }
     public void LoadFarmScene() {
         SceneManager.LoadScene("FarmScene");
@@ -77,5 +82,10 @@ public class GameManager : Singleton<GameManager> {
         data.growth = PlantGrowth.MINIMUM;
         plants[slotIndex] = data;
         return data;
+    }
+
+    public void HarvestPlant(int slotIndex, PlantType type) {
+        numHarvested[type] += 1;
+        plants.Remove(slotIndex);
     }
 }

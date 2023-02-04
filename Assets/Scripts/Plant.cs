@@ -10,6 +10,10 @@ public class Plant : MonoBehaviour {
         Render();
     }
 
+    public PlantData GetData() {
+        return data;
+    }
+
     public void Grow() {
         data.growth = DataUtils.IncrementPlantGrowth(data.growth);
         Render();

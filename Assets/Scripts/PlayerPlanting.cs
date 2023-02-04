@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class PlayerPlanting : MonoBehaviour {
 
-    private Collider2D plantSlot;
+    private PlantSlot plantSlot;
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("PlantSlot")) {
-            plantSlot = other;
+            plantSlot = other.GetComponent<PlantSlot>();
         }
     }
 
@@ -24,7 +24,7 @@ public class PlayerPlanting : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlot) {
-                plantSlot.gameObject.GetComponent<PlantSlot>().PlantNextCorpse();
+                plantSlot.Interact();
             } 
         }
     }
