@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
-    private bool canKill;
+    private bool _canKill;
     public npcLogic npc;
 
     // private Collision2D NPC;
-    private GameObject NPC;
     
     // Start is called before the first frame update
     void Start()
     {
-        npc = GameObject.FindWithTag("NPC").GetComponent<npcLogic>();
     }
 
     // Update is called once per frame
@@ -22,13 +20,13 @@ public class PlayerLogic : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            kill();
+            Kill();
         }
     }
 
-    void kill()
+    void Kill()
     {
-        if (canKill)
+        if (_canKill)
         {
             Debug.Log("KILL");
             npc.die();
@@ -43,7 +41,8 @@ public class PlayerLogic : MonoBehaviour
     {
         if (col.gameObject.CompareTag("NPC"))
         {
-            canKill = true;
+            npc = col.gameObject.GetComponent<npcLogic>();
+            _canKill = true;
         }
     }
 
@@ -51,7 +50,7 @@ public class PlayerLogic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("NPC"))
         {
-            canKill = false;
+            _canKill = false;
         }
     }
 }
