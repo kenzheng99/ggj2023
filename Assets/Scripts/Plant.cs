@@ -5,7 +5,31 @@ using UnityEngine;
 public class Plant : MonoBehaviour {
     private PlantData data;
 
-    public void SetType(PlantType type) {
-        data.type = type;
+    public void SetData(PlantData plantData) {
+        data = plantData;
+        Render();
+    }
+
+    public void Grow() {
+        data.growth = DataUtils.IncrementPlantGrowth(data.growth);
+        Render();
+    }
+
+    private void Render() {
+        float yScale = 0;
+        // TODO switch this to sprite changes
+        switch (data.growth) {
+            case PlantGrowth.MINIMUM:
+                yScale = 0.1f;
+                break;
+            case PlantGrowth.HALF:
+                yScale = 0.5f;
+                break;
+            case PlantGrowth.MAXIMUM:
+                yScale = 1.0f;
+                break;
+        }
+
+        transform.localScale = new Vector3(1, 5 * yScale, 1);
     }
 }

@@ -30,6 +30,10 @@ public class PlantSlot : MonoBehaviour
         
         Vector3 plantPosition = transform.position + Vector3.up * verticalOffset;
         plant = Instantiate(plantPrefab, plantPosition, Quaternion.identity);
-        plant.GetComponent<Plant>().SetType(plantData.type);
+        plant.GetComponent<Plant>().SetData(plantData);
+    }
+
+    public void Grow() {
+        plant.GetComponent<Plant>().Grow();
     }
 }

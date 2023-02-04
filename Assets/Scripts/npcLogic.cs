@@ -19,12 +19,22 @@ public class npcLogic : MonoBehaviour
     [SerializeField] private float waitTime = 5;
     private Vector3 _dir;
 
+    private CorpseType type;
+
     // Start is called before the first frame update
     void Start()
     {
         _isAlive = true;
         _moveTimer = 5; // NPC move on start
         Debug.Log("NPC Created");
+    }
+
+    public void SetCorpseType(CorpseType corpseType) {
+        type = corpseType;
+    }
+
+    public CorpseType GetCorpseType() {
+        return type;
     }
 
     // Update is called once per frame

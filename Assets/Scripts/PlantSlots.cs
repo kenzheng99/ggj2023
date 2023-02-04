@@ -11,7 +11,9 @@ public class PlantSlots : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++) {
             PlantData plantData = gameManager.GetPlantData(i);
             if (plantData != null) {
-                transform.GetChild(i).GetComponent<PlantSlot>().PlantInSlot(plantData);
+                PlantSlot plantSlot = transform.GetChild(i).GetComponent<PlantSlot>();
+                plantSlot.PlantInSlot(plantData);
+                plantSlot.Grow();
             }
         }
     }

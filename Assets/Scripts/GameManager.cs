@@ -8,20 +8,22 @@ using UnityEngine.UIElements;
 public enum PlantType {
     PLANT1,
     PLANT2,
-    PLANT3
+    PLANT3,
+    NONE 
 }
 
 public enum CorpseType {
     TYPE1,
     TYPE2,
-    TYPE3
+    TYPE3,
+    NONE
 }
 
 public enum PlantGrowth {
-    NOT_PLANTED,
     MINIMUM,
     HALF,
-    MAXIMUM
+    MAXIMUM,
+    NONE
 }
 
 public class PlantData {
@@ -69,10 +71,9 @@ public class GameManager : Singleton<GameManager> {
             return null;
         }
         CorpseType corpseToPlant = corpses.Dequeue();
+        print("CorpseToPlantType:" + corpseToPlant);
         PlantData data = new PlantData();
-        
-        // note this assumes that the PlantType and CorpseType enums are exactly aligned
-        data.type = (PlantType) CorpseType.TYPE1;
+        data.type = DataUtils.ConvertCorpseTypeToPlantType(corpseToPlant);
         data.growth = PlantGrowth.MINIMUM;
         plants[slotIndex] = data;
         return data;

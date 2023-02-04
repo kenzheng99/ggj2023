@@ -28,8 +28,7 @@ public class PlayerLogic : MonoBehaviour
     {
         if (_canKill)
         {
-            // TODO make this type dynamic
-            gameManager.AddCorpse(CorpseType.TYPE1);
+            gameManager.AddCorpse(npc.GetCorpseType());
             npc.Die();
         }
     }
