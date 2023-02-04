@@ -30,7 +30,7 @@ public class PlayerLogic : MonoBehaviour
         {
             // TODO make this type dynamic
             gameManager.AddCorpse(CorpseType.TYPE1);
-            npc.die();
+            npc.Die();
         }
     }
 

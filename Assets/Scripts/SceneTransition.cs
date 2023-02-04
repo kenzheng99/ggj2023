@@ -12,13 +12,16 @@ public class SceneTransition : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("hit sceneBarrier");
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "FarmScene") {
-            gameManager.LoadForestScene();
-        } else if (currentScene == "ForestScene") {
-            gameManager.LoadFarmScene();
-        } else {
-            Debug.Log("SceneBarrier: unknown scene");
+        if (other.gameObject.CompareTag("Player"))
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            if (currentScene == "FarmScene") {
+                gameManager.LoadForestScene();
+            } else if (currentScene == "ForestScene") {
+                gameManager.LoadFarmScene();
+            } else {
+                Debug.Log("SceneBarrier: unknown scene");
+            }
         }
     }
 }

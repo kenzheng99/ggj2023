@@ -29,6 +29,12 @@ public class PlantData {
     public PlantGrowth growth;
 }
 
+public class MapSize
+{
+    public static float w = 13;
+    public static float h = 17;
+}
+
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;

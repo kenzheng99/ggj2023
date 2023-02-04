@@ -10,8 +10,7 @@ public class NpcSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Spawn shit");
-        SpawnNpc(20, 10);
+        SpawnNpc(MapSize.w, MapSize.h);
     }
 
     private void SpawnNpc(float w, float h)
