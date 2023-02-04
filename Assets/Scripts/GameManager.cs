@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public enum PlantType {
     NONE,
@@ -25,6 +26,8 @@ public class PlantData {
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private PlantType corpseType = PlantType.NONE;
+
+    public GameObject npc;
     // TODO add other global state variables here
 
     void Start() {
@@ -51,7 +54,15 @@ public class GameManager : Singleton<GameManager> {
         if (plants.ContainsKey(index)) {
             return plants[index];
         }
-
         return null;
+    }
+
+    public void SpawnNPC(float w, float h)
+    {
+        // forest has width 38 height 23
+        for (int i = 0; i < Random.Range(3,6); i++)
+        {
+            Instantiate(npc, new Vector3(Random.Range(-w, w), Random.Range(-h, h), 0), transform.rotation);
+        }
     }
 }
