@@ -41,9 +41,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Background
     uniqueID: 2826868639
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: DynamicBack
+    uniqueID: 650273829
+    locked: 0
+  - name: NPCs
+    uniqueID: 3915279583
+    locked: 0
+  - name: Player
+    uniqueID: 3876196045
+    locked: 0
+  - name: DynamicFront
+    uniqueID: 2436898227
     locked: 0
