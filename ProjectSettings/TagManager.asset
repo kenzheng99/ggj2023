@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - PlantSlot
+  - PlantSlots
   layers:
   - Default
   - TransparentFX
