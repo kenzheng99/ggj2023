@@ -11,8 +11,9 @@ public class UiManager : Singleton<UiManager>
     private Dialogue dialogue;
 
     void Start() {
-        taskList = GameObject.Find("TaskListText").GetComponent<TaskList>();
-        taskList.CreateTaskList();
+        taskList = GameObject.Find("TaskListTMP").GetComponent<TaskList>();
+        taskList.GenerateTasks();
+        taskList.FillTaskList();
 
         taskCanvasObj = GameObject.Find("TaskCanvas");
         taskCanvasObj.SetActive(false);
@@ -25,6 +26,7 @@ public class UiManager : Singleton<UiManager>
     
     void Update() { 
         if (Input.GetKeyDown(KeyCode.Tab)) {
+            taskList.FillTaskList();
             taskCanvasObj.SetActive(true);
             Time.timeScale = 0;
         }

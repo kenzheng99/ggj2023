@@ -40,7 +40,7 @@ public class MapSize
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
-    private Dictionary<PlantType, int> numHarvested;
+    public Dictionary<PlantType, int> numHarvested;
     
     // player position for scene transitions
     // sorry for the hardcoding lol

@@ -52,4 +52,17 @@ public static class DataUtils {
                 return CorpseType.NONE;
         }
     }
+
+    public static string PlantToString(PlantType plant) {
+        switch (plant) {
+            case PlantType.PLANT1:
+                return "Karrot";
+            case PlantType.PLANT2:
+                return "Funion";
+            case PlantType.PLANT3:
+                return "Slowtato";
+            default:
+                return "";
+        }
+    }
 }
