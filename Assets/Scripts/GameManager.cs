@@ -155,6 +155,18 @@ public class GameManager : Singleton<GameManager> {
         numHarvested[type] += 1;
         plants.Remove(slotIndex);
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
+
+    void Update() {
+        Debug.Log("gamemanager update");
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log("quitting");
+            QuitGame();
+        }
+    }
 }
 
 // when layer gets kill call function in game manager

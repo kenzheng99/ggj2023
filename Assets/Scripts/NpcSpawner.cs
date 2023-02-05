@@ -9,6 +9,9 @@ public class NpcSpawner : MonoBehaviour
     public GameObject npcPrefab2;
     public GameObject npcPrefab3;
 
+    [SerializeField] private int min;
+    [SerializeField] private int max;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +21,12 @@ public class NpcSpawner : MonoBehaviour
     private void SpawnNpc(float w, float h)
     {
         // forest has width 38 height 23
-        for (int i = 0; i < Random.Range(3,6); i++) {
+        for (int i = 0; i < Random.Range(min,max); i++) {
             int rand = Random.Range(0, 3);
             GameObject npcToSpawn;
-            if (rand == 1) {
+            if (rand == 0) {
                 npcToSpawn = npcPrefab1;
-            } else if (rand == 2) {
+            } else if (rand == 1) {
                 npcToSpawn = npcPrefab2;
             } else {
                 npcToSpawn = npcPrefab3;

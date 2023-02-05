@@ -2105,6 +2105,8 @@ MonoBehaviour:
   npcPrefab1: {fileID: 105216282213368547, guid: 32e112cb878aa4ba3b4f078977a79299, type: 3}
   npcPrefab2: {fileID: 4056932613348995818, guid: 6f8c2d0ca468e4c8b922dbfdfaaa759a, type: 3}
   npcPrefab3: {fileID: 1733587091992969710, guid: d34094f1141684460a96873fd9eea143, type: 3}
+  min: 5
+  max: 10
 --- !u!4 &2044628583
 Transform:
   m_ObjectHideFlags: 0
