@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isAlive: 0
-  bodyBag: {fileID: 5103279204327032701, guid: 42b747147db5541588a06e068a34de51, type: 3}
+  bloodSplatter: {fileID: 2720090426634818920, guid: 927534c6375b144f38702bd20480cf27, type: 3}
   waitTime: 5

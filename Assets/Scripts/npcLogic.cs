@@ -14,7 +14,7 @@ public class npcLogic : MonoBehaviour
     public bool _isAlive;
     private float _mapWidth;
     private float _mapHeight;
-    [SerializeField] private GameObject bodyBag;
+    [SerializeField] private GameObject bloodSplatter;
     
     private float _moveTimer;
     [SerializeField] private float waitTime = 5;
@@ -71,7 +71,7 @@ public class npcLogic : MonoBehaviour
         if (_isAlive)
         {
             Debug.Log("dead NPC");
-            Instantiate(bodyBag, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(bloodSplatter, gameObject.transform.position, gameObject.transform.rotation);
             _isAlive = false;
             Destroy(gameObject);
         }
