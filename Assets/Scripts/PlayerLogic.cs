@@ -33,6 +33,8 @@ public class PlayerLogic : MonoBehaviour
             gameManager.AddCorpse(npc.GetCorpseType());
             npc.Die();
             anim.SetTrigger("isKilling");
+            GameManager.Instance.PlayerMadeFirstKill();
+            //attach kill SFX audio source to the player
         }
         else
         {

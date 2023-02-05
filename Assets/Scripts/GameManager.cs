@@ -48,6 +48,11 @@ public class GameManager : Singleton<GameManager> {
     private float forestSpawnY = 16.45f;
     private Vector3 defaultSpawnPosition = new Vector3(2, 11.28f, 0);
     private Vector3 nextSpawnPosition;
+    
+    // for sound management
+    public int peopleKilled;
+    public bool completedFirstKill;
+    public bool completedFirstPlant;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
@@ -60,6 +65,9 @@ public class GameManager : Singleton<GameManager> {
     }
     public void LoadFarmScene(float enterXPosition) {
         nextSpawnPosition = new Vector3(enterXPosition, farmSpawnY, 0);
+        peopleKilled = 0;
+        completedFirstKill = false;
+        completedFirstPlant = false;
         SceneManager.LoadScene("FarmScene");
     }
 
@@ -69,6 +77,26 @@ public class GameManager : Singleton<GameManager> {
     }
     public Vector3 GetPlayerSpawnPosition() {
         return nextSpawnPosition;
+    }
+    
+    public void PlayerMadeFirstKill()
+    {
+        if (completedFirstKill == false)
+        {
+            SoundManager.Instance.SwitchToKillMusic();
+            completedFirstKill = true;
+            // calls dialogue box "You killed someone."
+        }
+    }
+
+    public void PlayerMadeFirstPlant()
+    {
+        if (completedFirstPlant == false)
+        {
+            SoundManager.Instance.SwitchToPeacefulMusic();
+            completedFirstPlant = true;
+            // calls dialogue box "The roots intertwine with the buried body. Great job!"
+        }
     }
 
     public PlantData GetPlantData(int index) {
@@ -102,3 +130,6 @@ public class GameManager : Singleton<GameManager> {
         plants.Remove(slotIndex);
     }
 }
+
+// when layer gets kill call function in game manager
+// 

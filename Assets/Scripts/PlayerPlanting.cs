@@ -33,6 +33,7 @@ public class PlayerPlanting : MonoBehaviour {
                 bool interacted = plantSlots.Peek().Interact();
                 if (interacted) {
                     anim.SetTrigger("isPlanting");
+                    GameManager.Instance.PlayerMadeFirstPlant();
                 }
             } else {
                 Debug.Log("can't plant");
