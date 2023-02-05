@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Random=UnityEngine.Random;
 
 public enum PlantType {
     PLANT1,
@@ -38,12 +39,15 @@ public class MapSize
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
+    public string Tasks;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
         corpses = new Queue<CorpseType>();
+        CreateTaskList();
     }
     public void LoadFarmScene() {
+        
         SceneManager.LoadScene("FarmScene");
     }
 
@@ -76,5 +80,24 @@ public class GameManager : Singleton<GameManager> {
         data.growth = PlantGrowth.MINIMUM;
         plants[slotIndex] = data;
         return data;
+    }
+    
+    private void CreateTaskList()
+    {
+        List<string> names = new List<string>(new string[] 
+            {"Jason", "Jackson", "Jamie", "Johnson", "James", "Jessica"});
+        Tasks = "Tasks:\n\n";
+        for (var i = 0; i < 4; i++)
+        {
+            Debug.Log("generate task");
+            var idx = Random.Range(0, names.Count-1);
+            var nameStr = names[idx];
+            names.RemoveAt(idx);
+            // var task = nameStr + " wants " + (Random.Range(1,10)).ToString() 
+            //            + " type" + (Random.Range(1,3)).ToString();
+            var task = "Harvest " + (Random.Range(1,10)).ToString() 
+                       + " type" + (Random.Range(1,3)).ToString();
+            Tasks += task + "\n\n";
+        }
     }
 }
