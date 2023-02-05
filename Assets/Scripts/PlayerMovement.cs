@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float playerSpeed = 2;
+    [SerializeField] public float playerSpeed;
     public Rigidbody2D rb;
     public Animator anim;
     private Vector2 moveDirection;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         ProcessInputs();
         Animate();
         // if player is moving, play footsteps sound attached to player's audio source
-        if (rb.velocity.x > 0 || rb.velocity.y > 0)
+        if (rb.velocity.x != 0 || rb.velocity.y != 0)
         {
             if (!playerAudio.isPlaying)
             {
