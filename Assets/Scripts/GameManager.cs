@@ -80,23 +80,4 @@ public class GameManager : Singleton<GameManager> {
         plants[slotIndex] = data;
         return data;
     }
-    
-    // private void CreateTaskList()
-    // {
-    //     List<string> names = new List<string>(new string[] 
-    //         {"Jason", "Jackson", "Jamie", "Johnson", "James", "Jessica"});
-    //     Tasks = "Tasks:\n\n";
-    //     for (var i = 0; i < 4; i++)
-    //     {
-    //         Debug.Log("generate task");
-    //         var idx = Random.Range(0, names.Count-1);
-    //         var nameStr = names[idx];
-    //         names.RemoveAt(idx);
-    //         // var task = nameStr + " wants " + (Random.Range(1,10)).ToString() 
-    //         //            + " type" + (Random.Range(1,3)).ToString();
-    //         var task = "Harvest " + (Random.Range(1,10)).ToString() 
-    //                    + " type" + (Random.Range(1,3)).ToString();
-    //         Tasks += task + "\n\n";
-    //     }
-    // }
 }
