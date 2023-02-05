@@ -15,12 +15,14 @@ public class UiManager : Singleton<UiManager>
         taskCanvas.SetActive(false);
     }
     
-    void Update() {
+    void Update() { 
         if (Input.GetKeyDown(KeyCode.Tab)) {
             taskCanvas.SetActive(true);
+            Time.timeScale = 0;
         }
         else if (Input.GetKeyUp(KeyCode.Tab)) {
             taskCanvas.SetActive(false);
+            Time.timeScale = 1;
         }
     }
     
