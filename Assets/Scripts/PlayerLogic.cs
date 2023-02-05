@@ -8,7 +8,10 @@ public class PlayerLogic : MonoBehaviour
     private bool _canKill;
     public npcLogic npc;
     private GameManager gameManager;
+    private UiManager UM;
     Animator anim;
+
+    private bool firstInteract;
 
     // private Collision2D NPC;
     
@@ -16,6 +19,7 @@ public class PlayerLogic : MonoBehaviour
     void Start() {
         gameManager = GameManager.Instance;
         anim = gameObject.GetComponent<Animator>();
+        UM = GameObject.Find("UiManager").GetComponent<UiManager>();
     }
 
     void Update()
@@ -47,9 +51,10 @@ public class PlayerLogic : MonoBehaviour
         if (col.gameObject.CompareTag("NPC"))
         {
             npc = col.gameObject.GetComponent<npcLogic>();
-            if (npc._isAlive == true)
-            {
-                _canKill = true;
+            _canKill = true;
+            if (!firstInteract) {
+                UM.CreateDialogue("Now...\nkill them.");
+                firstInteract = true;
             }
         }
     }

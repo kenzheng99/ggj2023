@@ -8,7 +8,7 @@ TagManager:
   - PlantSlot
   - PlantSlots
   - Dialogue
-  - BodyBag
+  - UiManager
   layers:
   - Default
   - TransparentFX

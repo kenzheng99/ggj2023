@@ -21,12 +21,8 @@ public class AdvanceDialogue : MonoBehaviour
     }
     
     private void Advance() {
-        Debug.Log(dialogue);
-        var len = dialogue.AdvanceDialogue();
-        if (len == 0)
-        {
-            Text dialogueHint = GameObject.Find("DialogueHint").GetComponent<UnityEngine.UI.Text>();
-            dialogueHint.text = "Exit";
-        }
+        // Debug.Log(dialogue);
+        dialogue.AdvanceDialogue();
+
     }
 }

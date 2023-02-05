@@ -41,6 +41,7 @@ public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
     public Dictionary<PlantType, int> numHarvested;
+    private UiManager UM;
     
     // player position for scene transitions
     // sorry for the hardcoding lol
@@ -53,6 +54,11 @@ public class GameManager : Singleton<GameManager> {
     public int peopleKilled;
     public bool completedFirstKill;
     public bool completedFirstPlant;
+    
+    // for dialogues
+    private bool firstKillDialogue;
+    private bool firstPlantDialogue;
+    private bool startGame;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
@@ -62,7 +68,27 @@ public class GameManager : Singleton<GameManager> {
         numHarvested[PlantType.PLANT2] = 0;
         numHarvested[PlantType.PLANT3] = 0;
         nextSpawnPosition = defaultSpawnPosition;
+
+        UM = GameObject.Find("UiManager").GetComponent<UiManager>();
     }
+
+    private void Update() {
+        if (!firstKillDialogue && completedFirstKill) {
+            UM.CreateDialogue("You stuff the body in your bag.");
+            firstKillDialogue = true;
+        } else if (!firstPlantDialogue && completedFirstPlant) {
+            UM.CreateDialogue("The roots intertwine with the corpse…\nThe perfect gardening hack for fresh, fast, high quality produce!\n" +
+                              "Have fun farming :)");
+            firstPlantDialogue = true;
+        } else if (!startGame) {
+            UM.CreateDialogue("Welcome to People of the Farm! The perfectly normal farming game for perfectly normal people!\n" +
+                              "Try heading down to the Forest just south of here.\nPress [Tab] to see tasks and controls.");
+            startGame = true;
+        } else if (true) {
+        }
+        
+    }
+
     public void LoadFarmScene(float enterXPosition) {
         nextSpawnPosition = new Vector3(enterXPosition, farmSpawnY, 0);
         peopleKilled = 0;
