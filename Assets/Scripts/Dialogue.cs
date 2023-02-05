@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,5 +22,34 @@ public class Dialogue : MonoBehaviour
 
         speaking = true;
     }
-    
+
+    public int AdvanceDialogue()
+    {
+        StopAllCoroutines();
+        var len = _phases.Count;
+        if (len == 0)
+        {
+            StartCoroutine(TypePhase(_phases.Dequeue()));
+        }
+        else
+        {
+            Destroy();
+        }
+        return len;
+    }
+
+    IEnumerator TypePhase(string phase)
+    {
+        _dialogue.text = "";
+        foreach (char letter in phase.ToCharArray())
+        {
+            _dialogue.text += letter;
+            yield return null;
+        }
+    }
+
+    void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }
