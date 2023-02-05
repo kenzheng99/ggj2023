@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerPlanting : MonoBehaviour {
@@ -30,7 +31,7 @@ public class PlayerPlanting : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlots.Count != 0) {
-                bool interacted = plantSlots.Peek().Interact();
+                bool interacted = plantSlots.Dequeue().Interact();
                 if (interacted) {
                     anim.SetTrigger("isPlanting");
                     GameManager.Instance.PlayerMadeFirstPlant();
