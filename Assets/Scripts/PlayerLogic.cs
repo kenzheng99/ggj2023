@@ -28,7 +28,7 @@ public class PlayerLogic : MonoBehaviour
 
     void Kill()
     {
-        if (_canKill)
+        if (_canKill && npc._isAlive)
         {
             gameManager.AddCorpse(npc.GetCorpseType());
             npc.Die();
