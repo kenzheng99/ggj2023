@@ -6,6 +6,7 @@ public class UiManager : Singleton<UiManager>
 {
     private TaskList taskList;
     private GameObject taskCanvas;
+    
     public GameObject dialogue;
 
     public Transform uiManager;
@@ -29,17 +30,26 @@ public class UiManager : Singleton<UiManager>
         }
         
         if (Input.GetKeyDown(KeyCode.K)) {
-            SpawnDialogue();
+            string[] sentences = 
+            { "Hey there! You're Finally Awake!", 
+                "You were trying to cross the border, right?", 
+                "Walked right into that Imperial ambush, same as us, and that thief over there.", 
+                "Damn you Stormcloaks." };
+            SpawnDialogue(sentences);
         }
     }
 
-    private void SpawnDialogue() {
+    private void SpawnDialogue(string[] sentences) {
         GameObject prevDialogue = GameObject.FindWithTag("Dialogue");
         if ( prevDialogue != null) {
             Debug.Log("OH NO");
             Destroy(prevDialogue);
         }
-        Instantiate(dialogue, uiManager);
+        
+        dialogue = Instantiate(dialogue, uiManager);
+        Dialogue init = dialogue.GetComponent<Dialogue>();
+        
+        init.TriggerDialogue(sentences);
     }
     
     
