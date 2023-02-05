@@ -280,15 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc531b6849e54d8984e88c9375a3dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tasks: {fileID: 616190308}
-  gm: {fileID: -5306883289004034779, guid: a52d98d813abc4a098bb72d6656cb7f1, type: 3}
-  names:
-  - Jason
-  - Jackson
-  - Jamie
-  - Johnson
-  - James
-  - Jessica
+  Tasks: {fileID: 616190308}
 --- !u!1 &846415948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1733587091992969710, guid: fd8b7bde9c9654058805a865ac70d5d1, type: 3}
