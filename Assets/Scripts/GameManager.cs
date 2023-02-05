@@ -44,7 +44,7 @@ public class GameManager : Singleton<GameManager> {
     
     // player position for scene transitions
     // sorry for the hardcoding lol
-    private float farmSpawnY = -17.35f;
+    private float farmSpawnY = -16.17f;
     private float forestSpawnY = 16.45f;
     private Vector3 defaultSpawnPosition = new Vector3(2, 11.28f, 0);
     private Vector3 nextSpawnPosition;
