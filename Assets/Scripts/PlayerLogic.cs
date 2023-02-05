@@ -8,7 +8,6 @@ public class PlayerLogic : MonoBehaviour
     private bool _canKill;
     public npcLogic npc;
     private GameManager gameManager;
-    private UiManager UM;
     Animator anim;
 
     private bool firstInteract;
@@ -19,7 +18,6 @@ public class PlayerLogic : MonoBehaviour
     void Start() {
         gameManager = GameManager.Instance;
         anim = gameObject.GetComponent<Animator>();
-        UM = GameObject.Find("UiManager").GetComponent<UiManager>();
     }
 
     void Update()
@@ -52,10 +50,6 @@ public class PlayerLogic : MonoBehaviour
             gameManager.firstCollideNPC = true;
             npc = col.gameObject.GetComponent<npcLogic>();
             _canKill = true;
-            if (!firstInteract) {
-                UM.CreateDialogue("Now...\nkill them.");
-                firstInteract = true;
-            }
         }
     }
 

@@ -29,10 +29,11 @@ public class TaskList : MonoBehaviour
             var task = "Harvest " + plant.Value.ToString() 
                                   + " " + DataUtils.PlantToString(plant.Key)+"s";
 
-            if (plant.Value == gm.numHarvested[plant.Key]) {
-                task = "<s>" + task + "</s>";
+            if (plant.Value <= gm.numHarvested[plant.Key]) {
+                Debug.Log("shit");
+            task = "<s>" + task + " Done!</s>";
             }
-            Debug.Log(DataUtils.PlantToString(plant.Key) + " "+ gm.numHarvested[plant.Key]);
+            Debug.Log(DataUtils.PlantToString(plant.Key) + " "+ ":"+plant.Value+ gm.numHarvested[plant.Key] );
             tasksTMP.text += task + "\n";        
         }
     }
