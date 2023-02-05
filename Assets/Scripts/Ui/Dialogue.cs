@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour {
-    private Text dialogue;
+    public Text dialogue;
     private Queue<string> phases;
     private GameObject dialogueParent;
 
@@ -13,6 +13,8 @@ public class Dialogue : MonoBehaviour {
     }
 
     public void TriggerDialogue(string[] sentences) {
+        StopAllCoroutines();
+        dialogue.text = "";
         phases = new Queue<string>();
 
         foreach (string sentence in sentences) {
@@ -24,11 +26,12 @@ public class Dialogue : MonoBehaviour {
 
     public int AdvanceDialogue() {
         StopAllCoroutines();
-        if (phases.Count == 0) {
+        Debug.Log(phases.Count);
+        if (phases.Count != 0) {
             StartCoroutine(TypePhase(phases.Dequeue()));
         }
         else {
-            Destroy();
+            resetDialogue();
         }
 
         return phases.Count;
@@ -38,11 +41,13 @@ public class Dialogue : MonoBehaviour {
         dialogue.text = "";
         foreach (char letter in phase.ToCharArray()) {
             dialogue.text += letter;
-            yield return null;
+            yield return new WaitForSeconds((float)(0.01));
         }
     }
 
-    void Destroy() {
-        Destroy(dialogueParent);
+    private void resetDialogue() {
+        Text btnHint = GameObject.Find("DialogueHint").GetComponent<Text>();
+        btnHint.text = "Next";
+        dialogueParent.SetActive(false);
     }
 }

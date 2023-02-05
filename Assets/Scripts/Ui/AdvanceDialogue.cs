@@ -5,24 +5,27 @@ using UnityEngine.UI;
 
 public class AdvanceDialogue : MonoBehaviour
 {
-    public Dialogue dialogue;
+    private Dialogue dialogue;
     public Button nextButton;
     
     // Start is called before the first frame update
     void Start() {
-        dialogue = GameObject.FindWithTag("Dialogue").GetComponent<Dialogue>();
+        dialogue = GameObject.Find("DialogueText").GetComponent<Dialogue>();
         nextButton.onClick.AddListener(() => Advance());
-
-        if (Input.GetKeyDown(KeyCode.E)) {
-            
+    }
+    
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.F)) {
+            Advance();
         }
     }
     
     private void Advance() {
+        Debug.Log(dialogue);
         var len = dialogue.AdvanceDialogue();
         if (len == 1)
         {
-            Text dialogueHint = GameObject.Find("BtnHint").GetComponent<UnityEngine.UI.Text>();
+            Text dialogueHint = GameObject.Find("DialogueHint").GetComponent<UnityEngine.UI.Text>();
             dialogueHint.text = "Exit";
         }
     }

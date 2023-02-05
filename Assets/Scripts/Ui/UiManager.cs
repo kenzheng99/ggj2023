@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UiManager : Singleton<UiManager>
 {
+    private GameObject taskCanvasObj;
+    private GameObject dialogueObj;
     private TaskList taskList;
-    private GameObject taskCanvas;
-    
-    public GameObject dialogue;
-
-    public Transform uiManager;
+    private Dialogue dialogue;
 
     void Start() {
         taskList = GameObject.Find("TaskListText").GetComponent<TaskList>();
         taskList.CreateTaskList();
 
-        taskCanvas = GameObject.Find("TaskCanvas");
-        taskCanvas.SetActive(false);
+        taskCanvasObj = GameObject.Find("TaskCanvas");
+        taskCanvasObj.SetActive(false);
+
+        dialogueObj = GameObject.FindWithTag("Dialogue");
+        dialogue = GameObject.Find("DialogueText").GetComponent<Dialogue>();
+        dialogueObj.SetActive(false);
+        
     }
     
     void Update() { 
         if (Input.GetKeyDown(KeyCode.Tab)) {
-            taskCanvas.SetActive(true);
+            taskCanvasObj.SetActive(true);
             Time.timeScale = 0;
         }
         else if (Input.GetKeyUp(KeyCode.Tab)) {
-            taskCanvas.SetActive(false);
+            taskCanvasObj.SetActive(false);
             Time.timeScale = 1;
         }
         
@@ -35,22 +39,12 @@ public class UiManager : Singleton<UiManager>
                 "You were trying to cross the border, right?", 
                 "Walked right into that Imperial ambush, same as us, and that thief over there.", 
                 "Damn you Stormcloaks." };
-            SpawnDialogue(sentences);
+            dialogueObj.SetActive(true);
+            dialogue.TriggerDialogue(sentences);
         }
     }
 
-    private void SpawnDialogue(string[] sentences) {
-        GameObject prevDialogue = GameObject.FindWithTag("Dialogue");
-        if ( prevDialogue != null) {
-            Debug.Log("OH NO");
-            Destroy(prevDialogue);
-        }
-        
-        dialogue = Instantiate(dialogue, uiManager);
-        Dialogue init = dialogue.GetComponent<Dialogue>();
-        
-        init.TriggerDialogue(sentences);
-    }
+
     
     
 }
