@@ -8,6 +8,7 @@ TagManager:
   - PlantSlot
   - PlantSlots
   - Dialogue
+  - BodyBag
   layers:
   - Default
   - TransparentFX

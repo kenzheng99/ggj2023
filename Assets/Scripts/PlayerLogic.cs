@@ -34,7 +34,7 @@ public class PlayerLogic : MonoBehaviour
             npc.Die();
             anim.SetTrigger("isKilling");
             GameManager.Instance.PlayerMadeFirstKill();
-            //attach kill SFX audio source to the player
+            SoundManager.Instance.PlayKillSound();
         }
         else
         {
@@ -47,7 +47,10 @@ public class PlayerLogic : MonoBehaviour
         if (col.gameObject.CompareTag("NPC"))
         {
             npc = col.gameObject.GetComponent<npcLogic>();
-            _canKill = true;
+            if (npc._isAlive == true)
+            {
+                _canKill = true;
+            }
         }
     }
 
