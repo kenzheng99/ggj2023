@@ -6,6 +6,9 @@ public class UiManager : Singleton<UiManager>
 {
     private TaskList taskList;
     private GameObject taskCanvas;
+    public GameObject dialogue;
+
+    public Transform uiManager;
 
     void Start() {
         taskList = GameObject.Find("TaskListText").GetComponent<TaskList>();
@@ -23,6 +26,10 @@ public class UiManager : Singleton<UiManager>
         else if (Input.GetKeyUp(KeyCode.Tab)) {
             taskCanvas.SetActive(false);
             Time.timeScale = 1;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.K)) {
+            Instantiate(dialogue, uiManager);
         }
     }
     
