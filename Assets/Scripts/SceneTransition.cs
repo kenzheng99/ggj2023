@@ -16,9 +16,9 @@ public class SceneTransition : MonoBehaviour {
         {
             string currentScene = SceneManager.GetActiveScene().name;
             if (currentScene == "FarmScene") {
-                gameManager.LoadForestScene();
+                gameManager.LoadForestScene(other.transform.position.x);
             } else if (currentScene == "ForestScene") {
-                gameManager.LoadFarmScene();
+                gameManager.LoadFarmScene(other.transform.position.x);
             } else {
                 Debug.Log("SceneBarrier: unknown scene");
             }

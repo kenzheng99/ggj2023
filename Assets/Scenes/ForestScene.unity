@@ -900,11 +900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4328737029297439416, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.42
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4328737029297439416, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.07
+      value: 16.45
       objectReference: {fileID: 0}
     - target: {fileID: 4328737029297439416, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -937,6 +937,10 @@ PrefabInstance:
     - target: {fileID: 4328737029297439416, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328737029297439417, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
+      propertyPath: playerSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4328737029297439418, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_Name
@@ -2057,6 +2061,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9179765405259801648, guid: 68a89f7f2e3f849c4bfe9f3b6ee2be8f, type: 3}
+      propertyPath: maxX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179765405259801648, guid: 68a89f7f2e3f849c4bfe9f3b6ee2be8f, type: 3}
+      propertyPath: maxY
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179765405259801648, guid: 68a89f7f2e3f849c4bfe9f3b6ee2be8f, type: 3}
+      propertyPath: minX
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179765405259801648, guid: 68a89f7f2e3f849c4bfe9f3b6ee2be8f, type: 3}
+      propertyPath: minY
+      value: -13
+      objectReference: {fileID: 0}
     - target: {fileID: 9179765405259801648, guid: 68a89f7f2e3f849c4bfe9f3b6ee2be8f, type: 3}
       propertyPath: objectToFollow
       value: 

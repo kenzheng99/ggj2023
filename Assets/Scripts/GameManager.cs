@@ -41,6 +41,13 @@ public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
     private Dictionary<PlantType, int> numHarvested;
+    
+    // player position for scene transitions
+    // sorry for the hardcoding lol
+    private float farmSpawnY = -17.35f;
+    private float forestSpawnY = 16.45f;
+    private Vector3 defaultSpawnPosition = new Vector3(2, 11.28f, 0);
+    private Vector3 nextSpawnPosition;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
@@ -49,13 +56,19 @@ public class GameManager : Singleton<GameManager> {
         numHarvested[PlantType.PLANT1] = 0;
         numHarvested[PlantType.PLANT2] = 0;
         numHarvested[PlantType.PLANT3] = 0;
+        nextSpawnPosition = defaultSpawnPosition;
     }
-    public void LoadFarmScene() {
+    public void LoadFarmScene(float enterXPosition) {
+        nextSpawnPosition = new Vector3(enterXPosition, farmSpawnY, 0);
         SceneManager.LoadScene("FarmScene");
     }
 
-    public void LoadForestScene() {
+    public void LoadForestScene(float enterXPosition) {
+        nextSpawnPosition = new Vector3(enterXPosition, forestSpawnY, 0);
         SceneManager.LoadScene("ForestScene");
+    }
+    public Vector3 GetPlayerSpawnPosition() {
+        return nextSpawnPosition;
     }
 
     public PlantData GetPlantData(int index) {

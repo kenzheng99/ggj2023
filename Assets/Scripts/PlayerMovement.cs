@@ -8,8 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     private Vector2 moveDirection;
+    private GameManager gameManager;
 
-    // Update is called once per frame
+    void Start() {
+        gameManager = GameManager.Instance;
+        transform.position = gameManager.GetPlayerSpawnPosition();
+    }
     void Update()
     {
         ProcessInputs();
