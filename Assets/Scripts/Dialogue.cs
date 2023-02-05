@@ -9,7 +9,6 @@ public class Dialogue : MonoBehaviour
 {
     private Text _dialogue;
     private Queue<string> _phases;
-    private bool speaking = false;
 
     public void TriggerDialogue(string[] sentences)
     {
@@ -19,8 +18,7 @@ public class Dialogue : MonoBehaviour
         {
             _phases.Enqueue(sentence);
         }
-
-        speaking = true;
+        AdvanceDialogue();
     }
 
     public int AdvanceDialogue()

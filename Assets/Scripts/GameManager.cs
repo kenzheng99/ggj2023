@@ -40,13 +40,24 @@ public class MapSize
 public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
-
+    private DialogueSpawn _dialogueSpawn;
+    
     void Start() {
         plants = new Dictionary<int, PlantData>();
         corpses = new Queue<CorpseType>();
     }
+
+    // for testing use only, DELETE this
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _dialogueSpawn = GameObject.Find("Dialogue").GetComponent<DialogueSpawn>();
+            _dialogueSpawn.SpawnDialogue();
+        }
+    }
+
     public void LoadFarmScene() {
-        
         SceneManager.LoadScene("FarmScene");
     }
 
@@ -80,4 +91,6 @@ public class GameManager : Singleton<GameManager> {
         plants[slotIndex] = data;
         return data;
     }
+    
+    
 }
