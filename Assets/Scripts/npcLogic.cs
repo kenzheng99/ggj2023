@@ -11,9 +11,10 @@ using Vector3 = UnityEngine.Vector3;
 
 public class npcLogic : MonoBehaviour
 {
-    private bool _isAlive;
+    public bool _isAlive;
     private float _mapWidth;
     private float _mapHeight;
+    [SerializeField] private GameObject bodyBag;
     
     private float _moveTimer;
     [SerializeField] private float waitTime = 5;
@@ -70,9 +71,9 @@ public class npcLogic : MonoBehaviour
         if (_isAlive)
         {
             Debug.Log("dead NPC");
-            Vector3 fallRotation = new Vector3(0, 0, 90);
-            transform.Rotate(fallRotation);
+            Instantiate(bodyBag, gameObject.transform.position, gameObject.transform.rotation);
             _isAlive = false;
+            Destroy(gameObject);
         }
         
     }
