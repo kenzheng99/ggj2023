@@ -47,7 +47,10 @@ public class PlayerLogic : MonoBehaviour
         if (col.gameObject.CompareTag("NPC"))
         {
             npc = col.gameObject.GetComponent<npcLogic>();
-            _canKill = true;
+            if (npc._isAlive == true)
+            {
+                _canKill = true;
+            }
         }
     }
 
