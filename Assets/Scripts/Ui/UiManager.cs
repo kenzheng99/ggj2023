@@ -29,8 +29,17 @@ public class UiManager : Singleton<UiManager>
         }
         
         if (Input.GetKeyDown(KeyCode.K)) {
-            Instantiate(dialogue, uiManager);
+            SpawnDialogue();
         }
+    }
+
+    private void SpawnDialogue() {
+        GameObject prevDialogue = GameObject.FindWithTag("Dialogue");
+        if ( prevDialogue != null) {
+            Debug.Log("OH NO");
+            Destroy(prevDialogue);
+        }
+        Instantiate(dialogue, uiManager);
     }
     
     

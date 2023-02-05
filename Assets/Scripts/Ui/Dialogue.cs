@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour {
     private GameObject dialogueParent;
 
     private void Start() {
-        dialogueParent = GameObject.Find("Dialogue");
+        dialogueParent = GameObject.FindWithTag("Dialogue");
     }
 
     public void TriggerDialogue(string[] sentences) {

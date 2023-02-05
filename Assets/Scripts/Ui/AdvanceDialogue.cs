@@ -10,7 +10,7 @@ public class AdvanceDialogue : MonoBehaviour
     
     // Start is called before the first frame update
     void Start() {
-        dialogue = GameObject.Find("Dialogue").GetComponent<Dialogue>();
+        dialogue = GameObject.FindWithTag("Dialogue").GetComponent<Dialogue>();
         nextButton.onClick.AddListener(() => Advance());
 
         if (Input.GetKeyDown(KeyCode.E)) {
