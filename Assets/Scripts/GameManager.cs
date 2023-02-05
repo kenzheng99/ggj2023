@@ -41,6 +41,9 @@ public class GameManager : Singleton<GameManager> {
     private Dictionary<int, PlantData> plants;
     private Queue<CorpseType> corpses;
     private Dictionary<PlantType, int> numHarvested;
+    public int peopleKilled;
+    public bool completedFirstKill;
+    public bool completedFirstPlant;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
@@ -49,7 +52,32 @@ public class GameManager : Singleton<GameManager> {
         numHarvested[PlantType.PLANT1] = 0;
         numHarvested[PlantType.PLANT2] = 0;
         numHarvested[PlantType.PLANT3] = 0;
+        peopleKilled = 0;
+        completedFirstKill = false;
+        completedFirstPlant = false;
+
     }
+
+    public void PlayerMadeFirstKill()
+    {
+        if (completedFirstKill == false)
+        {
+            SoundManager.Instance.SwitchToKillMusic();
+            completedFirstKill = true;
+            // calls dialogue box "You killed someone."
+        }
+    }
+
+    public void PlayerMadeFirstPlant()
+    {
+        if (completedFirstPlant == false)
+        {
+            SoundManager.Instance.SwitchToPeacefulMusic();
+            completedFirstPlant = true;
+            // calls dialogue box "The roots intertwine with the buried body. Great job!"
+        }
+    }
+
     public void LoadFarmScene() {
         SceneManager.LoadScene("FarmScene");
     }
@@ -89,3 +117,6 @@ public class GameManager : Singleton<GameManager> {
         plants.Remove(slotIndex);
     }
 }
+
+// when layer gets kill call function in game manager
+// 

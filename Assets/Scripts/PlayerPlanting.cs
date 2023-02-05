@@ -30,8 +30,10 @@ public class PlayerPlanting : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlot) {
+                //attach plant/harvest SFX audio source to the player
                 plantSlot.Interact();
                 anim.SetTrigger("isPlanting");
+                GameManager.Instance.PlayerMadeFirstPlant();
             } else {
                 Debug.Log("can't plant");
             }
