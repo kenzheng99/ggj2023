@@ -5,46 +5,38 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public float playerSpeed = 2;
-    private Rigidbody2D rb;
-    private Animator anim;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-    }
+    public Rigidbody2D rb;
+    public Animator anim;
+    private Vector2 moveDirection;
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = Vector2.zero;
+        ProcessInputs();
+        Animate();
+    }
+    private void FixedUpdate()
+    {
+        Move();
+    }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            rb.velocity += Vector2.up * playerSpeed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.velocity += Vector2.down * playerSpeed;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity += Vector2.right * playerSpeed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity += Vector2.left * playerSpeed;
-        }
+    void ProcessInputs()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = rb.velocity.normalized * playerSpeed;
-        anim.SetFloat("moveX", rb.velocity.x);
-        anim.SetFloat("moveY", rb.velocity.y);
+        moveDirection = new Vector2(moveX, moveY).normalized;
+    }
 
-        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
-        {
-            anim.SetFloat(("lastMoveX"), Input.GetAxisRaw("Horizontal"));
-            anim.SetFloat(("lastMoveY"), Input.GetAxisRaw("Vertical"));
-        }
+    void Move()
+    {
+        rb.velocity = new Vector2(moveDirection.x * playerSpeed, moveDirection.y * playerSpeed);
+    }
+
+    void Animate()
+    {
+        anim.SetFloat("moveX", moveDirection.x);
+        anim.SetFloat("moveY", moveDirection.y);
     }
 }
+

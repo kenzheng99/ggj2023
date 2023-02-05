@@ -7,6 +7,12 @@ using UnityEngine;
 public class PlayerPlanting : MonoBehaviour {
 
     private PlantSlot plantSlot;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = gameObject.GetComponent<Animator>();
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("PlantSlot")) {
@@ -25,7 +31,10 @@ public class PlayerPlanting : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (plantSlot) {
                 plantSlot.Interact();
-            } 
+                anim.SetTrigger("isPlanting");
+            } else {
+                Debug.Log("can't plant");
+            }
         }
     }
 }

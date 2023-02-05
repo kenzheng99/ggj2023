@@ -8,12 +8,14 @@ public class PlayerLogic : MonoBehaviour
     private bool _canKill;
     public npcLogic npc;
     private GameManager gameManager;
+    Animator anim;
 
     // private Collision2D NPC;
     
     // Start is called before the first frame update
     void Start() {
         gameManager = GameManager.Instance;
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +32,11 @@ public class PlayerLogic : MonoBehaviour
         {
             gameManager.AddCorpse(npc.GetCorpseType());
             npc.Die();
+            anim.SetTrigger("isKilling");
+        }
+        else
+        {
+            Debug.Log("cannot kill");
         }
     }
 
