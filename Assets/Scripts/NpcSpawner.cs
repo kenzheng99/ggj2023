@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class NpcSpawner : MonoBehaviour
 {
-    public GameObject npc;
+    public GameObject npcPrefab1;
+    public GameObject npcPrefab2;
+    public GameObject npcPrefab3;
+
+    [SerializeField] private int min;
+    [SerializeField] private int max;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +21,19 @@ public class NpcSpawner : MonoBehaviour
     private void SpawnNpc(float w, float h)
     {
         // forest has width 38 height 23
-        for (int i = 0; i < Random.Range(3,6); i++)
-        {
-            GameObject npcObject = Instantiate(npc, new Vector3(Random.Range(-w, w), Random.Range(-h, h), 0), transform.rotation);
-            CorpseType randomType = DataUtils.IndexToCorpseType(Random.Range(0, 3));
+        for (int i = 0; i < Random.Range(min,max); i++) {
+            int rand = Random.Range(0, 3);
+            GameObject npcToSpawn;
+            if (rand == 0) {
+                npcToSpawn = npcPrefab1;
+            } else if (rand == 1) {
+                npcToSpawn = npcPrefab2;
+            } else {
+                npcToSpawn = npcPrefab3;
+            }
+            
+            GameObject npcObject = Instantiate(npcToSpawn, new Vector3(Random.Range(-w, w), Random.Range(-h, h), 0), transform.rotation);
+            CorpseType randomType = DataUtils.IndexToCorpseType(rand);
             npcObject.GetComponent<npcLogic>().SetCorpseType(randomType);
         }
     }

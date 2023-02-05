@@ -6,8 +6,13 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     private AudioSource musicSource;
+    [SerializeField] private AudioSource SFXSource;
+    [SerializeField] private AudioSource AmbienceSource;
     public AudioClip killMusic;
     public AudioClip peacefulMusic;
+    public AudioClip footstepSFX;
+    public AudioClip killSFX;
+    public AudioClip plantSFX;
 
     private void Start()
     {
@@ -31,6 +36,7 @@ public class SoundManager : MonoBehaviour
     {
         //play killMusic
         musicSource.clip = killMusic;
+        AmbienceSource.Stop();
         musicSource.Play();
     }
 
@@ -38,21 +44,19 @@ public class SoundManager : MonoBehaviour
     {
         //play peacefulMusic
         musicSource.clip = peacefulMusic;
+        AmbienceSource.Play();
         musicSource.Play();
     }
 
     public void PlayKillSound()
     {
-
+        SFXSource.clip = killSFX;
+        SFXSource.PlayOneShot(killSFX);
     }
 
     public void PlayPlantSound()
     {
-
-    }
-
-    public void PlayFootstepSound()
-    {
-
+        SFXSource.clip = plantSFX;
+        SFXSource.PlayOneShot(plantSFX);
     }
 }

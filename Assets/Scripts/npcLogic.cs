@@ -14,6 +14,8 @@ public class npcLogic : MonoBehaviour
     public bool _isAlive;
     private float _mapWidth;
     private float _mapHeight;
+    [SerializeField] private GameObject bloodSplatter;
+    public Animator anim;
     
     private float _moveTimer;
     [SerializeField] private float waitTime = 5;
@@ -61,6 +63,8 @@ public class npcLogic : MonoBehaviour
             {
                 _dir = new Vector3(-_dir.x, -_dir.y, 0);
             }
+            anim.SetFloat("moveX", _dir.x);
+            anim.SetFloat("moveY", _dir.y);
             transform.Translate((float)(.1) * Time.deltaTime * _dir);
         }
     }
@@ -70,9 +74,9 @@ public class npcLogic : MonoBehaviour
         if (_isAlive)
         {
             Debug.Log("dead NPC");
-            Vector3 fallRotation = new Vector3(0, 0, 90);
-            transform.Rotate(fallRotation);
+            Instantiate(bloodSplatter, gameObject.transform.position, gameObject.transform.rotation);
             _isAlive = false;
+            Destroy(gameObject);
         }
         
     }

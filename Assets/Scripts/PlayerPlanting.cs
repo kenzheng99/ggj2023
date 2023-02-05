@@ -35,6 +35,7 @@ public class PlayerPlanting : MonoBehaviour {
                 if (interacted) {
                     anim.SetTrigger("isPlanting");
                     GameManager.Instance.PlayerMadeFirstPlant();
+                    SoundManager.Instance.PlayPlantSound();
                 }
             } else {
                 Debug.Log("can't plant");

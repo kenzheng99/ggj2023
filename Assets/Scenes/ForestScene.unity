@@ -906,10 +906,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4328737029297439417, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
-      propertyPath: playerSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4328737029297439418, guid: 6e9cd0e6b130d42828dec340dbeef03d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2106,7 +2102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20b1b08c6e6d478a8241bbcbb2d632a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 1733587091992969710, guid: d34094f1141684460a96873fd9eea143, type: 3}
+  npcPrefab1: {fileID: 105216282213368547, guid: 32e112cb878aa4ba3b4f078977a79299, type: 3}
+  npcPrefab2: {fileID: 4056932613348995818, guid: 6f8c2d0ca468e4c8b922dbfdfaaa759a, type: 3}
+  npcPrefab3: {fileID: 1733587091992969710, guid: d34094f1141684460a96873fd9eea143, type: 3}
+  min: 5
+  max: 10
 --- !u!4 &2044628583
 Transform:
   m_ObjectHideFlags: 0

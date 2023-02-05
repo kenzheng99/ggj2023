@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,8 @@ public class Dialogue : MonoBehaviour {
         dialogueParent = GameObject.FindWithTag("Dialogue");
     }
 
-    public void TriggerDialogue(string[] sentences) {
+    public void TriggerDialogue(string msg) {
+        List<string> sentences = msg.Split('\n').ToList();
         StopAllCoroutines();
         dialogue.text = "";
         phases = new Queue<string>();
