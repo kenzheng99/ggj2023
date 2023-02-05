@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour {
     private PlantData data;
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private Sprite spriteSmall;
+    [SerializeField] private Sprite spriteMedium;
+    [SerializeField] private Sprite spriteLarge;
+
+    void Awake() {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     public void SetData(PlantData plantData) {
         data = plantData;
@@ -20,20 +29,17 @@ public class Plant : MonoBehaviour {
     }
 
     private void Render() {
-        float yScale = 0;
-        // TODO switch this to sprite changes
+        Debug.Log(data.growth);
         switch (data.growth) {
             case PlantGrowth.MINIMUM:
-                yScale = 0.1f;
+                spriteRenderer.sprite = spriteSmall;
                 break;
             case PlantGrowth.HALF:
-                yScale = 0.5f;
+                spriteRenderer.sprite = spriteMedium;
                 break;
             case PlantGrowth.MAXIMUM:
-                yScale = 1.0f;
+                spriteRenderer.sprite = spriteLarge;
                 break;
         }
-
-        transform.localScale = new Vector3(1, 5 * yScale, 1);
     }
 }
