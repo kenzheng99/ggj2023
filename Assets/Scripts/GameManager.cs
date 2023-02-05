@@ -84,7 +84,11 @@ public class GameManager : Singleton<GameManager> {
             UM.CreateDialogue("Welcome to People of the Farm! The perfectly normal farming game for perfectly normal people!\n" +
                               "Try heading down to the Forest just south of here.\nPress [Tab] to see tasks and controls.");
             startGame = true;
-        } else if (true) {
+        } 
+        
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log("quitting");
+            QuitGame();
         }
         
     }
@@ -158,14 +162,6 @@ public class GameManager : Singleton<GameManager> {
 
     public void QuitGame() {
         Application.Quit();
-    }
-
-    void Update() {
-        Debug.Log("gamemanager update");
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            Debug.Log("quitting");
-            QuitGame();
-        }
     }
 }
 

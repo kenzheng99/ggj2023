@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour {
     private GameManager gameManager;
     private UiManager UM;
+    //private bool showDialogue = true;
 
     void Awake() {
         gameManager = GameManager.Instance;
@@ -19,7 +20,11 @@ public class SceneTransition : MonoBehaviour {
             string currentScene = SceneManager.GetActiveScene().name;
             if (currentScene == "FarmScene") {
                 gameManager.LoadForestScene(other.transform.position.x);
-                UM.CreateDialogue("Great! You made it to the forest.\nLooks like there's some people over there\nGo say hi!");
+                // if (showDialogue) {
+                //     UM.CreateDialogue(
+                //     "Great! You made it to the forest.\nLooks like there's some people over there\nGo say hi!");
+                //     showDialogue = false;
+                // }
             } else if (currentScene == "ForestScene") {
                 gameManager.LoadFarmScene(other.transform.position.x);
             } else {
