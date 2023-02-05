@@ -11,7 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class npcLogic : MonoBehaviour
 {
-    private bool _isAlive;
+    public bool _isAlive;
     private float _mapWidth;
     private float _mapHeight;
     
