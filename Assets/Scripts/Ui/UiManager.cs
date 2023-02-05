@@ -33,15 +33,31 @@ public class UiManager : Singleton<UiManager>
             Time.timeScale = 1;
         }
         
+        string[] sentences1 = 
+        { "Hey there! You're Finally Awake!", 
+            "You were trying to cross the border, right?", 
+            "Walked right into that Imperial ambush, same as us, and that thief over there.", 
+            "Damn you Stormcloaks." };
+        string[] sentences2 = 
+        { "Never gonna give you up", 
+            "Never gonna let you down", 
+            "Never gonna run around and desert you", 
+            "Never gonna make you cry",
+            "Never gonna say goodbye",
+            "Never gonna tell a lie and hurt you"
+        };
+        
         if (Input.GetKeyDown(KeyCode.K)) {
-            string[] sentences = 
-            { "Hey there! You're Finally Awake!", 
-                "You were trying to cross the border, right?", 
-                "Walked right into that Imperial ambush, same as us, and that thief over there.", 
-                "Damn you Stormcloaks." };
-            dialogueObj.SetActive(true);
-            dialogue.TriggerDialogue(sentences);
+            CreateDialogue(sentences1);
         }
+        if (Input.GetKeyDown(KeyCode.N)) {
+            CreateDialogue(sentences2);
+        }
+    }
+
+    private void CreateDialogue(string[] sentences) {
+        dialogueObj.SetActive(true);
+        dialogue.TriggerDialogue(sentences);
     }
 
 

@@ -26,7 +26,6 @@ public class Dialogue : MonoBehaviour {
 
     public int AdvanceDialogue() {
         StopAllCoroutines();
-        Debug.Log(phases.Count);
         if (phases.Count != 0) {
             StartCoroutine(TypePhase(phases.Dequeue()));
         }
