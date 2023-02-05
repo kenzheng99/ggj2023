@@ -59,10 +59,4 @@ public class SoundManager : MonoBehaviour
         SFXSource.clip = plantSFX;
         SFXSource.PlayOneShot(plantSFX);
     }
-
-    public void PlayFootstepSound()
-    {
-        SFXSource.clip = footstepSFX;
-        SFXSource.Play();
-    }
 }
