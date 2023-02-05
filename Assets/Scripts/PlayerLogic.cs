@@ -48,8 +48,8 @@ public class PlayerLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("NPC"))
-        {
+        if (col.gameObject.CompareTag("NPC")) {
+            gameManager.firstCollideNPC = true;
             npc = col.gameObject.GetComponent<npcLogic>();
             _canKill = true;
             if (!firstInteract) {

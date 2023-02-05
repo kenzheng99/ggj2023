@@ -59,6 +59,9 @@ public class GameManager : Singleton<GameManager> {
     private bool firstKillDialogue;
     private bool firstPlantDialogue;
     private bool startGame;
+    private bool firstEnterForest;
+    public bool firstCollideNPC;
+    private bool trackFirstCollide;
 
     void Start() {
         plants = new Dictionary<int, PlantData>();
@@ -84,7 +87,11 @@ public class GameManager : Singleton<GameManager> {
             UM.CreateDialogue("Welcome to People of the Farm! The perfectly normal farming game for perfectly normal people!\n" +
                               "Try heading down to the Forest just south of here.\nPress [Tab] to see tasks and controls.");
             startGame = true;
-        } 
+
+        } else if (!trackFirstCollide && firstCollideNPC) {
+            UM.CreateDialogue("Now...\nkill them.");
+            trackFirstCollide = true;
+        }
         
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Debug.Log("quitting");
@@ -103,6 +110,11 @@ public class GameManager : Singleton<GameManager> {
 
     public void LoadForestScene(float enterXPosition) {
         nextSpawnPosition = new Vector3(enterXPosition, forestSpawnY, 0);
+        if (!firstEnterForest) {
+            UM.CreateDialogue(
+            "Great! You made it to the forest.\nLooks like there's some people over there\nGo say hi!");
+            firstEnterForest = true;
+        }
         SceneManager.LoadScene("ForestScene");
     }
     public Vector3 GetPlayerSpawnPosition() {
