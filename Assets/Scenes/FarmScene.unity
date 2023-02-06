@@ -1562,7 +1562,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sadf
+  m_text: '<s>sadf</s>
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52731a3f51ed74dedb7b554837b73b08, type: 2}
   m_sharedMaterial: {fileID: -1696696334126751840, guid: 52731a3f51ed74dedb7b554837b73b08, type: 2}
